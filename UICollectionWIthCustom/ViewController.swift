@@ -17,14 +17,17 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         
         // Do any additional setup after loading the view, typically from a nib.
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 100, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: view.frame.size.width/2-15, height: 150)
+        
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
         
         var collectionView: UICollectionView!
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CCell")
         collectionView.backgroundColor = UIColor.white
         self.view.addSubview(collectionView)
     }
@@ -39,7 +42,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCell", for: indexPath as IndexPath)
         cell.backgroundColor = UIColor.orange
        // cell.frame.size.width = view.frame.size.width/2
         return cell
